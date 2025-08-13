@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store</title>
+    <link rel="stylesheet" href="style.css">   
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo" onclick="showPage('home')">Fashion Store</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('shop')">Shop</a></li>
+                <li><a href="#" onclick="showPage('clothes')">Shirt</a></li>
+                <li><a href="#" onclick="showPage('pants')">Trousers</a></li>
+                <li><a href="#" onclick="showPage('skirts')">Skirt</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleDropdown()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="dropdown" id="dropdown">
+                <div class="dropdown-content">
+                    <a href="#" onclick="showPage('home')">Home</a>
+                    <a href="#" onclick="showPage('shop')">Shop</a>
+                    <a href="#" onclick="showPage('clothes')">Shirt</a>
+                    <a href="#" onclick="showPage('pants')">Trousers</a>
+                    <a href="#" onclick="showPage('skirts')">Skirt</a>
+                    <a href="#" onclick="showPage('shoes')">Shoe</a>
+                    <a href="#" onclick="showPage('socks')">Sock</a>
+                    <a href="#" onclick="showPage('belts')">Belt</a>
+                </div>
+            </div>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Home Page -->
+        <div class="page active" id="home">
+            <div class="hero">
+                <h1>New Fashion</h1>
+                <p> ແນະນຳແຟຊັ່ນສະໄຕລ໌ໃໝ່ລ່າສຸດ ຄຸນນະພາບດີ ລາຄາຈັບຕ້ອງໄດ້</p>
+                <a href="#" class="cta-button" onclick="showPage('shop')">Shoping</a>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: 2rem; color: #333;">ໝວດໝູ່ສິນຄ້າ</h2>
+            <div class="categories">
+                <div class="category-card" onclick="showPage('clothes')">
+                    <div class="category-icon">👕</div>
+                    <h3>ເສື້ອ</h3>
+                </div>
+                <div class="category-card" onclick="showPage('pants')">
+                    <div class="category-icon">👖</div>
+                    <h3>ໂສ້ງ</h3>
+                </div>
+                <div class="category-card" onclick="showPage('shoes')">
+                    <div class="category-icon">👟</div>
+                    <h3>ເກີບ</h3>
+                </div>
+                <div class="category-card" onclick="showPage('skirts')">
+                    <div class="category-icon">👗</div>
+                    <h3>ກະໂປງ</h3>
+                </div>
+                <div class="category-card" onclick="showPage('socks')">
+                    <div class="category-icon">🧦</div>
+                    <h3>ຖົງຕີນ</h3>
+                </div>
+                <div class="category-card" onclick="showPage('belts')">
+                    <div class="category-icon">👔</div>
+                    <h3>ສາຍແອວ</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shop Page -->
+        <div class="page" id="shop">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ສິນຄ້າທັງໝົດ</h2>
+            <div class="products-grid" id="allProducts">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Category Pages -->
+        <div class="page" id="clothes">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ເສື້ອ</h2>
+            <div class="products-grid" id="clothesProducts">
+                <!-- Clothes products will be loaded here -->
+            </div>
+        </div>
+
+        <div class="page" id="pants">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ໂສ້ງ</h2>
+            <div class="products-grid" id="pantsProducts">
+                <!-- Pants products will be loaded here -->
+            </div>
+        </div>
+
+        <div class="page" id="skirts">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ກະໂປງ</h2>
+            <div class="products-grid" id="skirtsProducts">
+                <!-- Skirts products will be loaded here -->
+            </div>
+        </div>
+
+        <div class="page" id="shoes">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ເກີບ</h2>
+            <div class="products-grid" id="shoesProducts">
+                <!-- Shoes products will be loaded here -->
+            </div>
+        </div>
+
+        <div class="page" id="socks">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ຖົງຕີນ</h2>
+            <div class="products-grid" id="socksProducts">
+                <!-- Socks products will be loaded here -->
+            </div>
+        </div>
+
+        <div class="page" id="belts">
+            <h2 style="text-align: center; margin-bottom: 2rem;">ສາຍແອວ</h2>
+            <div class="products-grid" id="beltsProducts">
+                <!-- Belts products will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <h2 style="text-align: center; margin-bottom: 1rem;">ກະຕ່າສິນຄ້າ</h2>
+            <div id="cartItems"></div>
+            <div class="cart-total" id="cartTotal">ລວມ: KIP0</div>
+            <button class="checkout-btn" onclick="checkout()">Order from WhatsApp</button>
+            <button class="cta-button" onclick="toggleCart()" style="margin-top: 1rem; width: 100%;">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About us</h3>
+                    <p>Fashion Store ຮ້ານຂາຍເຄື່ອງແຟຊັ່ນອອນລາຍ ຄຸນນະພາບດີ ລາຄາຈັບຕ້ອງໄດ້ ພ້ອມສົ່ງທົ່ວປະເທດ</p>
+                </div>
+                <div class="footer-section">
+                    <h3>ຕິດຕໍ່ເຮົາ</h3>
+                    <a href="tel:+856 12345678">📞 12345678</a>
+                    <a href="mailto:info@fashionstore.com">📧 info@fashionstore.com</a>
+                    <a href="#">📍 123 ເມືອງແຟຊັ່ນ ແຂວງນະຄອນແຟຊັ່ນ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>ບໍລິການລູກຄ້າ</h3>
+                    <a href="#">ວິທີການສັ່ງຊື້</a>
+                    <a href="#">ການຊຳລະເງິນ</a>
+                    <a href="#">ການຈັດສົ່ງ</a>
+                    <a href="#">ນະໂຍບາຍການຄືນສິນຄ້າ</a>
+                </div>
+                <div class="footer-section">
+                    <h3>ຕິດຕາມພວກເຮົາ</h3>
+                    <a href="#">📘 Facebook</a>
+                    <a href="#">📷 Instagram</a>
+                    <a href="#">🐦 Twitter</a>
+                    <a href="#">📱 Tiktok</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashion Store. ສະຫງວນລິຂະສິດ.</p>
+            </div>
+        </div>
+    </footer>
+
+     <script src="style.js"></script>
+</body>
+</html>
