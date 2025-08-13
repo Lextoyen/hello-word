@@ -170,7 +170,7 @@
             message += `\nລວມທັງໝົດ: ${formatPrice(total)}KIP\n\nຂໍຂອບໃຈ`;
             
             const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/2099603748?text=${encodedMessage}`;
+            const whatsappUrl = `wa.me/2097272081text=${encodedMessage}`;
             window.open(whatsappUrl, '_blank');
         }
 
@@ -185,4 +185,5 @@
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             showPage('home');
+
         });
